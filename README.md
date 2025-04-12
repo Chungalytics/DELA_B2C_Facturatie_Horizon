@@ -47,16 +47,27 @@ Kopieer Query 1 naar een tabblad "RAW Horizon" in een nieuw bestand 02 - Verwerk
 # Data Processing
 
 1  Insert table uit "RAW Horizon" in Power Query.
+
 2  Hernoem de tabel naar "01 - Lijst Verzekeringen" 
+
 3  PQ: Controleer de periode van de maand
+
 4  PQ: Verwijder alle dubble mailadressen 
+
 5  PQ: Add Conditional Column: = Table.AddColumn(#"Removed Duplicates", "Feedback leeftijd", each if [age] > 68 then "Niet Factureren - Leeftijd" else null)
+
 6  PQ: Verwijder kolom "buy_intent" & "sent_to"
+
 7  PQ: Insert table met alle leads: "02 - CRM Leads"
+
 8  PQ: New Query - Combine - Merge Queries as New: "01 - Lijst Verzekeringen" / "02 - CRM Leads" op basis van mailadres.
+
 9  PQ: Merge1: Expand all columns buiten email
+
 10 PQ: Add column: = Table.ReorderColumns(#"Added Conditional Column",{"email_client", "age", "date", "Feedback leeftijd", "Feedback", "02 - CRM Leads.Lead Number", "02 - CRM Leads.Created On", "02 - CRM Leads.Created By", "02 - CRM Leads.Lead Type", "02 - CRM Leads.Owner", "02 - CRM Leads.Customer Lifecycle Status (Parent Contact for lead) (Contact)", "02 - CRM Leads.Assigned Agent", "02 - CRM Leads.Source", "02 - CRM Leads.Type", "02 - CRM Leads.Postal Code", "02 - CRM Leads.Lead Provider", "02 - CRM Leads.Description", "02 - CRM Leads.Status", "02 - CRM Leads.Status Reason", "02 - CRM Leads.Status (Qualifying Opportunity) (Opportunity)", "02 - CRM Leads.Status Reason (Qualifying Opportunity) (Opportunity)", "02 - CRM Leads.Yomi Full Name", "02 - CRM Leads.Yomi First Name", "02 - CRM Leads.Yomi Middle Name", "02 - CRM Leads.Yomi Last Name", "02 - CRM Leads. Full Name (Parent Contact for lead) (Contact)", "02 - CRM Leads.Owner (Parent Contact for lead) (Contact)", "02 - CRM Leads.Abandonded Step", "02 - CRM Leads.Producer Account", "02 - CRM Leads.Status (Producer Account) (Producer Account)", "02 - CRM Leads.Intermediary (Producer Account) (Producer Account)", "02 - CRM Leads.Lead Generator (Producer Account) (Producer Account)", "02 - CRM Leads.Phone (Home/Office)", "02 - CRM Leads.Phone (Mobile)", "02 - CRM Leads.Date of Birth (Parent Contact for lead) (Contact)", "02 - CRM Leads.Language", "02 - CRM Leads.Postal Code (Parent Contact for lead) (Contact)", "02 - CRM Leads.City", "02 - CRM Leads.Lead Provider Reference", "02 - CRM Leads.Rating", "02 - CRM Leads.Assignment Status", "02 - CRM Leads.Postal Code (lookup)", "02 - CRM Leads.Country"})
+
 11 PQ: Reorder columns
+
 12 Copy all info out of Merge1 
 
 
